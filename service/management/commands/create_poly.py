@@ -7,6 +7,7 @@ from django.contrib.gis.geos import Point, MultiPoint
 import matplotlib as mpl
 import matplotlib.cm as cm
 from matplotlib.colors import rgb2hex
+import json
 
 MATCH_DICT = {
     "supermarket": "viridis",
@@ -26,12 +27,19 @@ MATCH_DICT = {
     "horeca": "spring",
     "healthcare": "autumn",
     "other": "plasma",
-    "bussines": "winter",
+    "business": "winter",
 }
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
+        D = {}
         norm = mpl.colors.Normalize(vmin=0, vmax=100)
+        for k, v in MATCH_DICT.items():
+            D[k] = [rgb2hex(cm.ScalarMappable(norm=norm, cmap=cm.get_cmap(MATCH_DICT[k])).to_rgba(float(0.01))),
+                    rgb2hex(cm.ScalarMappable(norm=norm, cmap=cm.get_cmap(MATCH_DICT[k])).to_rgba(float(99.99)))]
+        # print(D)
+        with open('cmaps.json', 'w') as f:
+            json.dump(D, f, indent=4)
         Poly.objects.all().delete()
         poly_models = []
         with open('cells (1).csv') as csvfile:

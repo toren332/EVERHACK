@@ -70,8 +70,8 @@ MATCH_DICT = {
             "Торговое помещение"
         ]
     },
-    "bussines": {
-        "bussines": [
+    "business": {
+        "business": [
             "Офисное помещение"
         ]
     },
@@ -127,7 +127,7 @@ MATCH_DICT2 = {
         "Помещение свободного назначения",
         "Торговое помещение"
     ],
-    "bussines": [
+    "business": [
         "Офисное помещение"
     ]
 }
@@ -168,7 +168,7 @@ class BuildingViewSet(viewsets.ReadOnlyModelViewSet):
             d = json.loads(serialize('geojson', queryset,
               geometry_field='point',
               fields=('id', 'kind', 'sell_type', 'total_price', 'square', 'image', 'first_line')))
-            cache.set('buildings', d, 60*60*24)
+            # cache.set('buildings', d, 60*60*24)
         resp = Response(d)
         resp["Access-Control-Allow-Origin"] = '*'
         resp["Access-Control-Allow-Methods"] = 'GET,PUT, OPTIONS'
@@ -210,7 +210,7 @@ class PolyViewSet(viewsets.ReadOnlyModelViewSet):
             d = json.loads(serialize('geojson', queryset,
               geometry_field='polygon',
               fields=('id', 'rank', 'fill', 'business_kind')))
-            cache.set('poly', d, 60 * 60 * 24)
+            # cache.set('poly', d, 60 * 60 * 24)
         resp = Response(d)
         resp["Access-Control-Allow-Origin"] = '*'
         resp["Access-Control-Allow-Methods"] = 'GET,PUT, OPTIONS'
