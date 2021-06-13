@@ -10,24 +10,21 @@ from matplotlib.colors import rgb2hex
 import json
 
 MATCH_DICT = {
-    "supermarket": "viridis",
-    "alco": "cividis",
-    "restaurant": "Blues",
-    "cafe": "Reds",
-    "pubs": "PuBu",
-    "night_club": "RdPu",
-    "fast_food": "Oranges",
-    "coffee": "GnBu",
-    "hospital": "YlGn",
-    "clinic": "binary",
-    "dentist": "Wistia",
-    "vet": "copper",
+    "supermarket": "binary",
+    "restaurant": "gist_gray",
+    "cafe": "gray",
+    "pubs": "bone",
+    "night_club": "pink",
+    "hospital": "autumn",
+    "clinic": "winter",
+    "dentist": "cool",
+    "vet": "Wistia",
     "food_retail": "hot",
-    "beauty":  "cool",
-    "horeca": "spring",
-    "healthcare": "autumn",
-    "other": "plasma",
-    "business": "winter",
+    "beauty":  "afmhot",
+    "horeca": "gist_heat",
+    "healthcare": "copper",
+    "other": "summer",
+    "business": "spring",
 }
 
 class Command(BaseCommand):

@@ -14,7 +14,7 @@ class Command(BaseCommand):
         # _ = 0
         Building.objects.all().delete()
         building_models = []
-        with open('реальные точки КН.csv') as csvfile:
+        with open('avito1.csv') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 point = Point((float(row['X']), float(row['Y'])), srid=4326)
@@ -22,8 +22,8 @@ class Command(BaseCommand):
                 square = row['square']
                 kind = row['kind']
                 total_price = row['total_price']
-                # image = json.loads(row['images'])['orig']
-                image = "https://65.img.avito.st/image/1/oNLn4bayDDvRSM4-q6OApgVCDD1HQA4"
+                image = json.loads(row['images'])['main']['640x480']
+                # image = "https://65.img.avito.st/image/1/oNLn4bayDDvRSM4-q6OApgVCDD1HQA4"
 
                 # if not os.path.isfile(image):
                 #     _+=1
