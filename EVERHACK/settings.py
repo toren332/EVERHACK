@@ -89,7 +89,7 @@ DATABASES = {
         'USER': 'uapp_user',
         'PASSWORD': 'uapp_pass',
         'HOST': os.environ.get('SQL_HOST', '0.0.0.0'),
-        'PORT': 5432,
+        'PORT': 5433,
     }
 }
 
