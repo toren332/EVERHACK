@@ -161,8 +161,8 @@ class BuildingViewSet(viewsets.ReadOnlyModelViewSet):
         return qs
 
     def list(self, request, *args, **kwargs):
-        d = cache.get('buildings')
-        # d = None
+        # d = cache.get('buildings')
+        d = None
         if d is None:
             queryset = self.filter_queryset(self.get_queryset())
             d = json.loads(serialize('geojson', queryset,
@@ -203,8 +203,8 @@ class PolyViewSet(viewsets.ReadOnlyModelViewSet):
         return qs
 
     def list(self, request, *args, **kwargs):
-        d = cache.get('poly')
-        # d = None
+        # d = cache.get('poly')
+        d = None
         if d is None:
             queryset = self.filter_queryset(self.get_queryset())
             d = json.loads(serialize('geojson', queryset,
