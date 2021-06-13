@@ -11,7 +11,7 @@ services:
       &&
       python manage.py collectstatic --noinput
       &&
-      gunicorn uapp.wsgi:application -w 2 --bind 0.0.0.0:8088 --timeout 120
+      gunicorn EVERHACK.wsgi:application -w 2 --bind 0.0.0.0:8088 --timeout 120
       '
     environment:
       - SQL_HOST=db
