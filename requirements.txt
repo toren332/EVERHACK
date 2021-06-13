@@ -8,4 +8,4 @@ Pillow
 tqdm
 gunicorn==19.9.0
 matplotlib
-corsheaders
+django-cors-headers
