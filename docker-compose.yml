@@ -46,7 +46,7 @@ services:
     ports:
       - "5435:5432"
     expose:
-      - "5435"
+      - "5432"
     command: postgres -c listen_addresses='*'
 
 # sudo docker exec -it uapp_web_1 python manage.py makemigrations
