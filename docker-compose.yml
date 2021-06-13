@@ -49,8 +49,8 @@ services:
       - "5432"
     command: postgres -c listen_addresses='*'
 
-# sudo docker exec -it uapp_web_1 python manage.py makemigrations
-# sudo docker exec -it uapp_web_1 python manage.py migrate
+# sudo docker exec -it everhack_web_1 python manage.py create_buildings
+# sudo docker exec -it everhack_web_1 python manage.py create_poly
 # sudo docker exec -it uapp_web_1 service gunicorn stop
 # sudo docker exec -it uapp_web_1 gunicorn uapp.wsgi:application --bind 0.0.0.0:8000 --reload
 # sudo docker stop uapp_telegram_1

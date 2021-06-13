@@ -34,7 +34,7 @@ class Command(BaseCommand):
         norm = mpl.colors.Normalize(vmin=0, vmax=100)
         Poly.objects.all().delete()
         poly_models = []
-        with open('пример полигонов.csv') as csvfile:
+        with open('cells (1).csv') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 polygon = row['geometry']
