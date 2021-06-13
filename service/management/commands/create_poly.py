@@ -10,19 +10,19 @@ from matplotlib.colors import rgb2hex
 import json
 
 MATCH_DICT = {
-    "supermarket": "binary",
-    "restaurant": "gist_gray",
-    "cafe": "gray",
-    "pubs": "bone",
+    "supermarket": "Blues",
+    "restaurant": "Reds",
+    "cafe": "PuRd",
+    "pubs": "Oranges",
     "night_club": "pink",
     "hospital": "autumn",
     "clinic": "winter",
-    "dentist": "cool",
+    "dentist": "GnBu",
     "vet": "Wistia",
     "food_retail": "hot",
     "beauty":  "afmhot",
-    "horeca": "gist_heat",
-    "healthcare": "copper",
+    "horeca": "YlGn",
+    "healthcare": "BuGn",
     "other": "summer",
     "business": "spring",
 }
