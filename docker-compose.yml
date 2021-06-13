@@ -11,30 +11,30 @@ services:
       &&
       python manage.py collectstatic --noinput
       &&
-      gunicorn uapp.wsgi:application -w 2 --bind 0.0.0.0:8000 --timeout 120
+      gunicorn uapp.wsgi:application -w 2 --bind 0.0.0.0:8088 --timeout 120
       '
     environment:
       - SQL_HOST=db
     volumes:
       - .:/code
     ports:
-      - "8000:8000"
+      - "8088:8088"
     expose:
-      - "8000"
+      - "8088"
     restart: always
     depends_on:
       - db
 
-  nginx:
-    image: nginx
-    ports:
-      - "80:80"
-    volumes:
-      - ./nginx:/etc/nginx/conf.d
-      - ./staticfiles/:/staticfiles
-      - ./media/:/media
-    depends_on:
-      - web
+#  nginx:
+#    image: nginx
+#    ports:
+#      - "80:80"
+#    volumes:
+#      - ./nginx:/etc/nginx/conf.d
+#      - ./staticfiles/:/staticfiles
+#      - ./media/:/media
+#    depends_on:
+#      - web
 
   db:
     image: mdillon/postgis
