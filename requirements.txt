@@ -1,0 +1,10 @@
+Django==3.1
+djangorestframework==3.11.1
+#psycopg2-binary==2.8.3
+pandas
+xlrd==1.2.0
+requests
+Pillow
+tqdm
+gunicorn==19.9.0
+matplotlib

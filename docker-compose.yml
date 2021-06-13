@@ -1,0 +1,66 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: >
+      bash -c '
+      python manage.py makemigrations service
+      &&
+      python manage.py migrate
+      &&
+      python manage.py collectstatic --noinput
+      &&
+      gunicorn uapp.wsgi:application -w 2 --bind 0.0.0.0:8000 --timeout 120
+      '
+    environment:
+      - SQL_HOST=db
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    expose:
+      - "8000"
+    restart: always
+    depends_on:
+      - db
+
+  nginx:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./staticfiles/:/staticfiles
+      - ./media/:/media
+    depends_on:
+      - web
+
+  db:
+    image: mdillon/postgis
+    environment:
+      - POSTGRES_DB=uapp_db
+      - POSTGRES_USER=uapp_user
+      - POSTGRES_PASS=uapp_pass
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - "5432:5432"
+    expose:
+      - "5432"
+    command: postgres -c listen_addresses='*'
+
+# sudo docker exec -it uapp_web_1 python manage.py makemigrations
+# sudo docker exec -it uapp_web_1 python manage.py migrate
+# sudo docker exec -it uapp_web_1 service gunicorn stop
+# sudo docker exec -it uapp_web_1 gunicorn uapp.wsgi:application --bind 0.0.0.0:8000 --reload
+# sudo docker stop uapp_telegram_1
+#      python manage.py createsuperuserwithpassword
+#      &&
+#      python manage.py create_skills
+#      &&
+#      python manage.py create_universities
+#      &&
+#      python manage.py create_onboarding
+#      &&
+#      python manage.py create_users
+#      &&
